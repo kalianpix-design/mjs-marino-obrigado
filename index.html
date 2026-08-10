@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrigado, MJS – Projeto Marino | Kalian</title>
+<meta name="description" content="Seus vídeos aéreos estão prontos. Baixe o material, aprenda a postar em 4K ou deixe que a gente publica pra você. Feito por Kalian.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Seus vídeos estão prontos, MJS – Projeto Marino">
+<meta property="og:description" content="Obrigado por confiar no nosso trabalho. Baixe seus vídeos e aprenda a postar em 4K.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0b'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23d4af7a' font-family='Georgia,serif'%3EK%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --bg-soft:#111114;
+    --card:#16161a;
+    --card-hover:#1c1c22;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --text:#f4f2ee;
+    --muted:#a3a09a;
+    --muted-soft:#6f6d68;
+    --gold:#d4af7a;
+    --gold-soft:#e7cfa6;
+    --gold-deep:#b8935a;
+    --wa:#25d366;
+    --radius:20px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* cinematic ambient background */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(1100px 600px at 78% -10%, rgba(212,175,122,.14), transparent 60%),
+      radial-gradient(900px 500px at 5% 8%, rgba(120,110,90,.10), transparent 55%),
+      linear-gradient(180deg,#0c0c0e 0%, #0a0a0b 40%, #08080a 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;opacity:.35;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .serif{font-family:Georgia,"Times New Roman",serif}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,10,11,.55);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:.14em}
+  .logo .mark{
+    width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:#171205;font-family:Georgia,serif;font-weight:700;font-size:19px;
+    box-shadow:0 6px 20px rgba(212,175,122,.28);
+  }
+  .logo .name{font-size:15px;color:var(--text)}
+  .logo .name b{color:var(--gold-soft);font-weight:600}
+  .nav .site-link{font-size:13.5px;color:var(--muted);letter-spacing:.02em;display:none}
+  .nav .site-link:hover{color:var(--gold-soft)}
+  @media(min-width:640px){.nav .site-link{display:inline}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:60px 24px 30px;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    border:1px solid var(--line-strong);border-radius:100px;
+    padding:8px 16px;margin-bottom:26px;background:rgba(212,175,122,.05);
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+  h1{
+    font-size:clamp(32px,6.4vw,58px);line-height:1.1;font-weight:600;
+    letter-spacing:-.01em;margin-bottom:20px;
+  }
+  h1 .accent{
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold) 55%,var(--gold-deep));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-style:italic;
+  }
+  .lede{
+    font-size:clamp(16px,2.1vw,19px);color:var(--muted);
+    max-width:620px;margin:0 auto 8px;
+  }
+  .client-tag{
+    display:inline-block;margin-top:22px;font-size:13px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted-soft);
+  }
+  .client-tag b{color:var(--text);font-weight:600}
+
+  /* ---------- video stage ---------- */
+  .stage{
+    display:flex;flex-direction:column;align-items:center;
+    padding:40px 24px 12px;
+  }
+  .phone{
+    position:relative;width:min(320px,82vw);
+    border-radius:34px;padding:10px;
+    background:linear-gradient(160deg,#26262b,#0e0e11);
+    border:1px solid var(--line-strong);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.03) inset;
+  }
+  .phone::before{
+    content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
+    width:74px;height:5px;border-radius:100px;background:rgba(255,255,255,.14);z-index:3;
+  }
+  .phone video{
+    width:100%;display:block;border-radius:26px;background:#000;
+    aspect-ratio:1080/2344;object-fit:cover;
+  }
+  .phone-sm{width:min(268px,72vw)}
+  /* delivery card */
+  .deliver{
+    position:relative;overflow:hidden;text-align:center;
+    max-width:640px;margin:0 auto;padding:48px 34px 42px;
+    border-radius:26px;border:1px solid var(--line-strong);
+    background:linear-gradient(165deg, rgba(28,28,33,.9), rgba(13,13,16,.9));
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.85);
+  }
+  .deliver .deliver-glow{
+    position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+    width:520px;height:320px;filter:blur(80px);opacity:.5;pointer-events:none;
+    background:radial-gradient(ellipse,var(--gold),transparent 70%);
+  }
+  .deliver>*{position:relative;z-index:1}
+  .deliver-ic{
+    width:64px;height:64px;margin:0 auto 20px;border-radius:16px;display:grid;place-items:center;
+    background:rgba(212,175,122,.1);border:1px solid var(--line-strong);color:var(--gold);
+  }
+  .deliver-ic svg{width:32px;height:32px}
+  .deliver-k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .deliver-h{font-size:clamp(23px,4vw,32px);font-weight:600;letter-spacing:-.01em;margin-bottom:12px;line-height:1.2}
+  .deliver-h .accent{
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold-deep));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .deliver-p{color:var(--muted);font-size:16px;max-width:440px;margin:0 auto 28px}
+  .deliver-meta{margin-top:18px;font-size:13px;color:var(--muted-soft);letter-spacing:.02em}
+  .tut-video{display:flex;flex-direction:column;align-items:center;margin-bottom:38px}
+  /* collab invite */
+  .collab{
+    display:flex;gap:18px;align-items:center;max-width:640px;margin:20px auto 0;
+    padding:22px 24px;border-radius:20px;text-align:left;
+    background:linear-gradient(120deg, rgba(212,175,122,.12), rgba(212,175,122,.04));
+    border:1px solid var(--gold-deep);
+  }
+  .collab-ic{
+    flex:0 0 auto;width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1a1305;
+    box-shadow:0 10px 26px -8px rgba(212,175,122,.5);
+  }
+  .collab-ic svg{width:26px;height:26px}
+  .collab-body h3{font-size:17px;font-weight:600;margin-bottom:3px}
+  .collab-body p{font-size:14.5px;color:var(--muted)}
+  .collab-body b{color:var(--gold-soft);font-weight:600}
+  @media(max-width:520px){.collab{flex-direction:column;text-align:center;align-items:center}}
+  .stage .glow{
+    position:absolute;inset:auto;width:min(320px,82vw);height:200px;
+    filter:blur(70px);opacity:.5;z-index:-1;
+    background:radial-gradient(ellipse,var(--gold),transparent 70%);
+  }
+  .cap{margin-top:20px;font-size:13.5px;color:var(--muted-soft)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-size:15.5px;font-weight:600;letter-spacing:.01em;
+    padding:15px 26px;border-radius:14px;cursor:pointer;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s;
+    line-height:1;white-space:nowrap;
+  }
+  .btn svg{width:19px;height:19px;flex:0 0 auto}
+  .btn-gold{
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold) 60%,var(--gold-deep));
+    color:#1a1305;box-shadow:0 14px 34px -12px rgba(212,175,122,.6);
+  }
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 20px 44px -12px rgba(212,175,122,.72)}
+  .btn-ghost{background:var(--card);color:var(--text);border-color:var(--line-strong)}
+  .btn-ghost:hover{background:var(--card-hover);border-color:var(--gold);transform:translateY(-2px)}
+  .btn-wa{background:var(--wa);color:#04310f;box-shadow:0 14px 34px -14px rgba(37,211,102,.6)}
+  .btn-wa:hover{transform:translateY(-2px);filter:brightness(1.05)}
+  .btn-lg{padding:18px 34px;font-size:16.5px}
+  .btn-block{width:100%}
+
+  .download-row{display:flex;justify-content:center;padding:14px 0 8px}
+
+  /* ---------- section shell ---------- */
+  section.block{padding:66px 0;border-top:1px solid var(--line)}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 42px}
+  .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  h2{font-size:clamp(26px,4vw,38px);font-weight:600;letter-spacing:-.01em;line-height:1.15;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:16px}
+
+  /* ---------- 4K chooser ---------- */
+  .choices{display:grid;grid-template-columns:1fr;gap:18px;max-width:820px;margin:0 auto}
+  @media(min-width:720px){.choices{grid-template-columns:1fr 1fr}}
+  .choice{
+    text-align:left;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:28px 26px;cursor:pointer;
+    transition:border-color .2s, background .2s, transform .15s;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .choice:hover{border-color:var(--line-strong);background:var(--card-hover);transform:translateY(-2px)}
+  .choice.active{border-color:var(--gold);background:var(--card-hover);box-shadow:0 0 0 1px var(--gold) inset}
+  .choice .ic{
+    width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:8px;
+    background:rgba(212,175,122,.1);border:1px solid var(--line-strong);
+  }
+  .choice .ic svg{width:24px;height:24px;color:var(--gold)}
+  .choice h3{font-size:19px;font-weight:600}
+  .choice p{color:var(--muted);font-size:14.5px}
+  .choice .pill{margin-top:6px;font-size:12.5px;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:6px}
+
+  /* ---------- revealed panels ---------- */
+  .panel{display:none;margin:34px auto 0;max-width:860px;animation:fade .35s ease}
+  .panel.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* tutorial */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:26px}
+  .tab{
+    padding:10px 20px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;
+    background:var(--card);border:1px solid var(--line);color:var(--muted);transition:.2s;
+  }
+  .tab:hover{color:var(--text);border-color:var(--line-strong)}
+  .tab.active{background:linear-gradient(120deg,var(--gold-soft),var(--gold-deep));color:#1a1305;border-color:transparent}
+  .steps{display:none}
+  .steps.show{display:block}
+  .step{
+    display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .step:last-child{border-bottom:none}
+  .step .num{
+    flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+    font-family:Georgia,serif;font-weight:700;font-size:17px;
+    background:rgba(212,175,122,.1);color:var(--gold);border:1px solid var(--line-strong);
+  }
+  .step .body h4{font-size:16.5px;font-weight:600;margin-bottom:4px}
+  .step .body p{color:var(--muted);font-size:14.5px}
+  .step .body b{color:var(--gold-soft);font-weight:600}
+  .note{
+    margin-top:24px;padding:16px 20px;border-radius:14px;font-size:14px;color:var(--muted);
+    background:rgba(212,175,122,.06);border:1px solid var(--line-strong);
+  }
+  .note b{color:var(--gold-soft)}
+
+  /* contact panel */
+  .contact-card{
+    background:var(--card);border:1px solid var(--line-strong);border-radius:var(--radius);
+    padding:34px 30px;text-align:center;
+  }
+  .contact-card h3{font-size:22px;font-weight:600;margin-bottom:8px}
+  .contact-card p{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 26px}
+  .contact-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .send-hint{margin-top:20px;font-size:13px;color:var(--muted-soft)}
+
+  /* ---------- explore other sites ---------- */
+  .explore{display:grid;grid-template-columns:1fr;gap:20px;max-width:900px;margin:0 auto}
+  @media(min-width:720px){.explore{grid-template-columns:1fr 1fr}}
+  .xcard{
+    position:relative;overflow:hidden;border-radius:var(--radius);
+    border:1px solid var(--line);background:var(--card);padding:32px 30px;
+    transition:border-color .2s,transform .18s,background .2s;display:flex;flex-direction:column;
+  }
+  .xcard:hover{border-color:var(--gold);transform:translateY(-3px);background:var(--card-hover)}
+  .xcard .top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .xcard .badge{
+    width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    background:rgba(212,175,122,.1);border:1px solid var(--line-strong);color:var(--gold);
+  }
+  .xcard .badge svg{width:22px;height:22px}
+  .xcard .dom{font-size:13px;color:var(--muted-soft);letter-spacing:.02em}
+  .xcard h3{font-size:20px;font-weight:600;margin-bottom:8px}
+  .xcard p{color:var(--muted);font-size:14.5px;flex:1;margin-bottom:20px}
+  .xcard .go{display:inline-flex;align-items:center;gap:8px;color:var(--gold-soft);font-weight:600;font-size:14.5px}
+  .xcard .go svg{width:16px;height:16px;transition:transform .2s}
+  .xcard:hover .go svg{transform:translate(3px,-3px)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:56px 0 44px;text-align:center}
+  .foot-logo{font-family:Georgia,serif;font-size:26px;letter-spacing:.12em;color:var(--gold-soft);margin-bottom:6px}
+  .foot-tag{color:var(--muted-soft);font-size:14px;margin-bottom:26px}
+  .foot-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+  .foot-links a{
+    display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);
+    padding:10px 18px;border:1px solid var(--line);border-radius:100px;transition:.2s;
+  }
+  .foot-links a:hover{color:var(--text);border-color:var(--gold);background:var(--card)}
+  .foot-links svg{width:16px;height:16px}
+  .copy{font-size:12.5px;color:var(--muted-soft);letter-spacing:.02em}
+  .copy a{color:var(--muted)}
+  .copy a:hover{color:var(--gold-soft)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://kalian.com.br" target="_blank" rel="noopener">
+      <span class="mark">K</span>
+      <span class="name"><b>KALIAN</b> · Produções Cinematográficas</span>
+    </a>
+    <a class="site-link" href="https://kalian.com.br" target="_blank" rel="noopener">kalian.com.br ↗</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <span class="eyebrow"><span class="dot"></span> Entrega de vídeo</span>
+    <h1>Obrigado por confiar no <span class="accent">nosso trabalho</span></h1>
+    <p class="lede">Foi um prazer capturar a essência da sua marca do alto. Seus vídeos já estão prontos, é só baixar e brilhar nas redes.</p>
+    <span class="client-tag">Projeto exclusivo · <b>MJS – Projeto Marino</b></span>
+  </section>
+
+  <!-- DELIVERY CARD -->
+  <section class="stage wrap">
+    <div class="deliver">
+      <div class="deliver-glow"></div>
+      <div class="deliver-ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 9h19M7 4v5M17 4v5M7 20v-5M17 20v-5M2.5 15h19"/></svg>
+      </div>
+      <div class="deliver-k">Entrega pronta</div>
+      <h2 class="deliver-h">Seus vídeos estão no <span class="accent">Google Drive</span></h2>
+      <p class="deliver-p">É só clicar para acessar e baixar todos os seus vídeos em 4K, na qualidade máxima.</p>
+      <a class="btn btn-gold btn-lg" href="https://drive.google.com/drive/folders/1CcG--IFuFhGLj3dZ6A5j4uGbX95pYaq1" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Acessar meus vídeos
+      </a>
+      <div class="deliver-meta">Arquivos em 4K · abre no Google Drive ↗</div>
+    </div>
+
+    <!-- COLLAB CONVITE -->
+    <div class="collab">
+      <div class="collab-ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="collab-body">
+        <h3>Bora crescer juntos? 💛</h3>
+        <p>Aceitamos <b>Collab no Instagram</b>! Ao postar seu vídeo, adicione a <a href="https://instagram.com/kalian.maker" target="_blank" rel="noopener"><b>@kalian.maker</b></a> como <b>colaborador</b>. Assim seu conteúdo aparece nos dois perfis e alcança muito mais gente, de graça.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4K CHOOSER -->
+  <section class="block" id="quatro-k">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Publique com qualidade máxima</div>
+        <h2>Quer postar seu vídeo em 4K?</h2>
+        <p>As redes sociais costumam comprimir vídeos e perder qualidade. Escolha abaixo: aprenda o passo a passo para postar em 4K você mesmo, ou deixe que a gente publica pra você.</p>
+      </div>
+
+      <div class="choices">
+        <div class="choice" id="c-learn" onclick="pick('learn')">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Quero aprender a postar em 4K</h3>
+          <p>Passo a passo simples para Instagram, TikTok e mais, sem perder qualidade.</p>
+          <span class="pill">Ver tutorial ↓</span>
+        </div>
+
+        <div class="choice" id="c-done" onclick="pick('done')">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3>Prefiro que vocês postem pra mim</h3>
+          <p>Envie seus arquivos e a gente publica com a qualidade máxima pra você.</p>
+          <span class="pill">Falar com a Kalian ↓</span>
+        </div>
+      </div>
+
+      <!-- PANEL: tutorial -->
+      <div class="panel" id="panel-learn">
+        <div class="tut-video">
+          <div class="phone phone-sm">
+            <video src="assets/tutorial-4k.mp4" poster="assets/tutorial-poster.jpg" controls playsinline preload="metadata"></video>
+          </div>
+          <p class="cap">🎬 Vídeo-tutorial · como exportar e publicar seu vídeo com qualidade máxima</p>
+        </div>
+        <div class="tabs">
+          <div class="tab active" data-t="ig" onclick="tab('ig')">Instagram / Reels</div>
+          <div class="tab" data-t="tk" onclick="tab('tk')">TikTok</div>
+          <div class="tab" data-t="ge" onclick="tab('ge')">Regra de ouro</div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="steps show" id="steps-ig">
+          <div class="step"><div class="num">1</div><div class="body"><h4>Baixe o arquivo original</h4><p>Abra o Google Drive, toque no vídeo e escolha <b>Baixar</b>. Salve direto na galeria do celular, sem tirar print e sem regravar a tela.</p></div></div>
+          <div class="step"><div class="num">2</div><div class="body"><h4>Ative o envio em alta qualidade</h4><p>No Instagram, vá em <b>Perfil → ☰ Menu → Configurações → Uso de dados de mídia</b> e ligue <b>“Enviar em qualidade mais alta”</b>. Faça isso antes de postar.</p></div></div>
+          <div class="step"><div class="num">3</div><div class="body"><h4>Poste conectado ao Wi-Fi</h4><p>Com internet fraca o Instagram reduz a qualidade automaticamente. Publique em um <b>Wi-Fi estável</b> para o vídeo subir inteiro.</p></div></div>
+          <div class="step"><div class="num">4</div><div class="body"><h4>Suba como Reels na vertical</h4><p>Seu vídeo já está no formato ideal (<b>vertical 9:16</b>). Poste como <b>Reels</b> para ocupar a tela toda e ter o melhor alcance.</p></div></div>
+          <div class="step"><div class="num">5</div><div class="body"><h4>Não aplique filtros pesados</h4><p>O tratamento de cor já foi feito. Evite filtros e edições extras dentro do app, isso re-comprime e degrada a imagem.</p></div></div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="steps" id="steps-tk">
+          <div class="step"><div class="num">1</div><div class="body"><h4>Baixe o arquivo original do Drive</h4><p>Salve o vídeo na galeria pelo botão <b>Baixar</b> do Google Drive. Nunca envie por WhatsApp antes, ele comprime o arquivo.</p></div></div>
+          <div class="step"><div class="num">2</div><div class="body"><h4>Ative “Enviar em HD”</h4><p>Na tela de publicação do TikTok, toque em <b>Mais opções</b> e ligue <b>“Enviar em HD / alta qualidade”</b>.</p></div></div>
+          <div class="step"><div class="num">3</div><div class="body"><h4>Desligue o modo economia de dados</h4><p>Em <b>Configurações → Economia de dados</b>, deixe <b>desativado</b>. Ele derruba a qualidade dos envios.</p></div></div>
+          <div class="step"><div class="num">4</div><div class="body"><h4>Publique no Wi-Fi</h4><p>Assim o TikTok processa a versão em maior resolução. Depois de postar, aguarde alguns minutos: a qualidade sobe conforme o processamento termina.</p></div></div>
+        </div>
+
+        <!-- Golden rule -->
+        <div class="steps" id="steps-ge">
+          <div class="step"><div class="num">✦</div><div class="body"><h4>Transfira sem compressão</h4><p>Para tirar o vídeo do computador/celular use <b>AirDrop</b> ou baixe direto do <b>Google Drive</b>. <b>Nunca</b> use WhatsApp para mover o arquivo, ele reduz muito a qualidade.</p></div></div>
+          <div class="step"><div class="num">✦</div><div class="body"><h4>Nunca grave a tela nem tire print</h4><p>Sempre poste o <b>arquivo original</b>. Regravar a tela ou printar destrói a resolução 4K.</p></div></div>
+          <div class="step"><div class="num">✦</div><div class="body"><h4>Wi-Fi + qualidade máxima ligada</h4><p>Em qualquer rede social, a combinação é sempre a mesma: <b>internet boa</b> + opção de <b>alta qualidade ativada</b> nas configurações do app.</p></div></div>
+          <div class="note"><b>Na dúvida?</b> Se algo não deu certo ou a qualidade não ficou boa, é só falar com a gente, a gente posta pra você. Toque em <b>“Prefiro que vocês postem pra mim”</b> acima.</div>
+        </div>
+      </div>
+
+      <!-- PANEL: done-for-you -->
+      <div class="panel" id="panel-done">
+        <div class="contact-card">
+          <h3>Deixa com a gente 💛</h3>
+          <p>Envie os arquivos que você quer publicar (ou só me diga qual vídeo do Drive) e a gente posta em 4K, com a qualidade máxima, pra você. Simples assim.</p>
+          <div class="contact-actions">
+            <a class="btn btn-wa btn-lg" href="https://wa.me/5521999446820?text=Ol%C3%A1%21%20Sou%20da%20A%2B%20Boutique%20e%20quero%20que%20voc%C3%AAs%20postem%20meu%20v%C3%ADdeo%20em%204K%20pra%20mim." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 1-1 2.42s1.03 2.8 1.17 3c.14.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.69.22 1.31.19 1.8.12.55-.08 1.74-.71 1.98-1.4.24-.68.24-1.27.17-1.4-.07-.13-.26-.2-.56-.35zM12.05 21.5h-.02a9.44 9.44 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.45 9.45 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.47-9.47 9.47zm8.06-17.53A11.35 11.35 0 0 0 12.05.65C5.8.65.72 5.73.72 11.98c0 2 .52 3.95 1.52 5.67L.62 23.35l5.85-1.53a11.3 11.3 0 0 0 5.57 1.42h.01c6.24 0 11.32-5.08 11.32-11.33 0-3.03-1.18-5.87-3.32-8.01z"/></svg>
+              Enviar pelo WhatsApp
+            </a>
+            <a class="btn btn-ghost btn-lg" href="mailto:contato@kalian.com.br?subject=Postar%20meu%20v%C3%ADdeo%20em%204K%20-%20A%2B%20Boutique&body=Ol%C3%A1%2C%20Kalian%21%0A%0AGostaria%20que%20voc%C3%AAs%20postassem%20meu%20v%C3%ADdeo%20em%204K.%20Segue%20o%20material%2Fdetalhes%3A%0A%0A">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Enviar por e-mail
+            </a>
+          </div>
+          <p class="send-hint">WhatsApp (21) 99944-6820 · contato@kalian.com.br</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Continue com a gente</div>
+        <h2>Explore mais do nosso trabalho</h2>
+        <p>Conheça o portfólio completo e, se precisar de imagens aéreas prontas, temos um banco só pra isso.</p>
+      </div>
+
+      <div class="explore">
+        <a class="xcard" href="https://kalian.com.br" target="_blank" rel="noopener">
+          <div class="top">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 3 3 9-3 9 19-9Z"/><path d="M6.5 12H21"/></svg></span>
+            <span class="dom">kalian.com.br</span>
+          </div>
+          <h3>Site oficial Kalian</h3>
+          <p>Produções cinematográficas e vídeo para marcas. Veja o portfólio, serviços e feche o próximo projeto.</p>
+          <span class="go">Visitar site oficial
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </span>
+        </a>
+
+        <a class="xcard" href="https://dronemaker.com.br" target="_blank" rel="noopener">
+          <div class="top">
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></svg></span>
+            <span class="dom">dronemaker.com.br</span>
+          </div>
+          <h3>Comprar imagens de drone</h3>
+          <p>Nosso banco de vídeos aéreos prontos para uso. Encontre a cena perfeita e baixe na hora para seus projetos.</p>
+          <span class="go">Ver banco de vídeos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-logo serif">Kalian</div>
+    <div class="foot-tag">Produções cinematográficas · Obrigado, MJS – Projeto Marino 💛</div>
+    <div class="foot-links">
+      <a href="https://wa.me/5521999446820" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.65.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.65-1.58-.9-2.16-.24-.57-.48-.5-.65-.5h-.56c-.2 0-.5.07-.77.37-.26.3-1 1-1 2.42s1.03 2.8 1.17 3c.14.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.69.22 1.31.19 1.8.12.55-.08 1.74-.71 1.98-1.4.24-.68.24-1.27.17-1.4-.07-.13-.26-.2-.56-.35z"/></svg>
+        (21) 99944-6820
+      </a>
+      <a href="mailto:contato@kalian.com.br">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        contato@kalian.com.br
+      </a>
+      <a href="https://instagram.com/kalian.maker" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        @kalian.maker
+      </a>
+      <a href="https://kalian.com.br" target="_blank" rel="noopener">kalian.com.br</a>
+      <a href="https://dronemaker.com.br" target="_blank" rel="noopener">dronemaker.com.br</a>
+    </div>
+    <div class="copy">© <span id="yr"></span> Kalian · Todos os direitos reservados · Feito com dedicação para <a href="#">MJS – Projeto Marino</a></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  function pick(which){
+    var learn = document.getElementById('panel-learn');
+    var done  = document.getElementById('panel-done');
+    var cl = document.getElementById('c-learn');
+    var cd = document.getElementById('c-done');
+    if(which==='learn'){
+      var open = learn.classList.contains('show');
+      learn.classList.toggle('show', !open);
+      done.classList.remove('show');
+      cl.classList.toggle('active', !open);
+      cd.classList.remove('active');
+      if(!open) learn.scrollIntoView({behavior:'smooth', block:'nearest'});
+    } else {
+      var openD = done.classList.contains('show');
+      done.classList.toggle('show', !openD);
+      learn.classList.remove('show');
+      cd.classList.toggle('active', !openD);
+      cl.classList.remove('active');
+      if(!openD) done.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  }
+
+  function tab(t){
+    document.querySelectorAll('.tab').forEach(function(el){
+      el.classList.toggle('active', el.getAttribute('data-t')===t);
+    });
+    ['ig','tk','ge'].forEach(function(id){
+      document.getElementById('steps-'+id).classList.toggle('show', id===t);
+    });
+  }
+</script>
+</body>
+</html>
